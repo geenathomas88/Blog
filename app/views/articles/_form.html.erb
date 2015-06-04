@@ -1,0 +1,27 @@
+<% if @article.errors.any?%>
+  <div id ="error_explanation">
+    <h3>
+      <%= pluralize(@article.errors.count, "error")%> prevented this article from saving
+    </h3>
+    <ul>
+      <%@article.errors.full_messages.each do |msg|%>
+        <li>
+          <%= msg%>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+<% end%>
+<%= form_for @article do |f|%>
+  <p>
+    <%= f.label :title%><br>
+    <%= f.text_field :title%>
+  </p>
+  <p>
+    <%= f.label :text%><br>
+    <%= f.text_field :text%>
+  </p>
+  <p>
+    <%= f.submit%>
+  </p>
+<% end %>
